@@ -1,27 +1,10 @@
 import React, { useEffect } from 'react';
-import ReactPDF, {
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-  PDFViewer,
-} from '@react-pdf/renderer';
 import { collection, getDocs } from 'firebase/firestore';
+import { Routes, Route } from 'react-router-dom';
 
 import { db } from './firebase';
-
-const styles = StyleSheet.create({
-  page: {
-    flexDirection: 'row',
-    backgroundColor: '#E4E4E4',
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-});
+import PrintCards from './components/PrintCards';
+import NavBar from './components/NavBar';
 
 const App: React.FC = () => {
   const fetchPost = async () => {
@@ -39,21 +22,14 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <PDFViewer>
-      <Document>
-        <Page size="A4" style={styles.page}>
-          <View style={styles.section}>
-            <Text>Section #1</Text>
-          </View>
-          <View style={styles.section}>
-            <Text>Section #2</Text>
-          </View>
-        </Page>
-      </Document>
-    </PDFViewer>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<>Home</>} />
+        <Route path="/print" element={<PrintCards />} />
+      </Routes>
+    </>
   );
 };
-
-// ReactPDF.render(<App />, `${__dirname}/example.pdf`);
 
 export default App;
