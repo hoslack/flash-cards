@@ -7,6 +7,7 @@ import {
   StyleSheet,
   PDFViewer,
 } from '@react-pdf/renderer';
+import sampleCards from '../../Constants/sampleCards';
 
 // Define styles
 const styles = StyleSheet.create({
@@ -27,19 +28,16 @@ const styles = StyleSheet.create({
   rightBorder: {
     borderRightWidth: 1,
   },
+
   cardText: {
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  urlText: {
-    fontSize: 10,
-    color: 'gray',
+    fontSize: 14,
     marginTop: 8,
+    textAlign: 'center',
   },
   pageNumber: {
     position: 'absolute',
     fontSize: 12,
-    bottom: 30,
+    bottom: 20,
     left: 0,
     right: 0,
     textAlign: 'center',
@@ -57,15 +55,19 @@ const Cards: React.FC = () => (
   >
     <Document>
       <Page size="A4" style={styles.page}>
-        {[...Array(40)].map((_, index) => (
-          <View
-            key={index}
-            style={[styles.card, index % 2 === 0 ? styles.rightBorder : {}]}
-          >
-            <Text style={styles.cardText}>YOUR BUSINESS CARD HERE</Text>
-            <Text style={styles.urlText}>@DesignResources.com</Text>
-          </View>
-        ))}
+        {sampleCards.map((card, index) => {
+          return (
+            <>
+              <View key={index} style={[styles.card, styles.rightBorder]}>
+                <Text style={styles.cardText}>{card.question}</Text>
+              </View>
+              <View key={index} style={[styles.card]}>
+                <Text style={styles.cardText}>{card.answer}</Text>
+              </View>
+            </>
+          );
+        })}
+
         <Text
           style={styles.pageNumber}
           render={({ pageNumber, totalPages }) =>
