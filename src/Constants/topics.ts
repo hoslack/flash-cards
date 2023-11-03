@@ -5,6 +5,8 @@ const TopicsEnum = {
   HISTORY: 'History',
   ART: 'Art',
   MUSIC: 'Music',
+  REACT: 'React',
+  DSA: 'DSA',
 };
 
 export default TopicsEnum;

@@ -14,7 +14,8 @@ import {
   Image,
   useColorModeValue,
 } from '@chakra-ui/react';
-import TopicsEnum from '../../Constants/topics';
+import TopicsEnum from '../../constants/topics';
+import { QuestionType } from '../../interfaces';
 
 const schema = yup
   .object({
@@ -24,7 +25,10 @@ const schema = yup
   })
   .required();
 
-const QuestionForm: React.FC = () => {
+type QuestionFormProps = {
+  onSubmit: (data: QuestionType) => void;
+};
+const QuestionForm: React.FC<QuestionFormProps> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -38,7 +42,6 @@ const QuestionForm: React.FC = () => {
     },
   });
 
-  const onSubmit = (data: any) => console.log(data);
   return (
     <Box w={[300, 500, 700]} h="350px" minW={200} justifyContent="center">
       <Center>
@@ -47,7 +50,7 @@ const QuestionForm: React.FC = () => {
           rounded={'md'}
           overflow={'hidden'}
           w={[300, 500, 700]}
-          minW={200}
+          minW={300}
         >
           <Image
             h={'120px'}
@@ -85,7 +88,7 @@ const QuestionForm: React.FC = () => {
                   Question
                 </FormLabel>
                 <Textarea
-                  maxLength={20}
+                  maxLength={60}
                   id="question"
                   placeholder="Enter a question here"
                   {...register('question')}
@@ -100,7 +103,7 @@ const QuestionForm: React.FC = () => {
                   Answer
                 </FormLabel>
                 <Textarea
-                  maxLength={100}
+                  maxLength={120}
                   id="answer"
                   placeholder="Add the answer here..."
                   {...register('answer')}

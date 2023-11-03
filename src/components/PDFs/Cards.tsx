@@ -7,7 +7,7 @@ import {
   StyleSheet,
   PDFViewer,
 } from '@react-pdf/renderer';
-import sampleCards from '../../Constants/sampleCards';
+import sampleCards from '../../constants/sampleCards';
 
 // Define styles
 const styles = StyleSheet.create({
