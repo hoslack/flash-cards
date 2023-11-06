@@ -7,7 +7,7 @@ import {
   StyleSheet,
   PDFViewer,
 } from '@react-pdf/renderer';
-import sampleCards from '../../constants/sampleCards';
+import { QuestionType } from '../../interfaces';
 
 // Define styles
 const styles = StyleSheet.create({
@@ -46,7 +46,12 @@ const styles = StyleSheet.create({
 });
 
 // Create Document component
-const Cards: React.FC = () => (
+
+type CardsProps = {
+  cards: QuestionType[];
+};
+
+const Cards: React.FC<CardsProps> = ({ cards }) => (
   <PDFViewer
     style={{
       width: '100%',
@@ -55,16 +60,16 @@ const Cards: React.FC = () => (
   >
     <Document>
       <Page size="A4" style={styles.page}>
-        {sampleCards.map((card, index) => {
+        {cards.map((card: QuestionType, index: number) => {
           return (
-            <>
-              <View key={index} style={[styles.card, styles.rightBorder]}>
+            <React.Fragment key={index}>
+              <View style={[styles.card, styles.rightBorder]}>
                 <Text style={styles.cardText}>{card.question}</Text>
               </View>
               <View key={index} style={[styles.card]}>
                 <Text style={styles.cardText}>{card.answer}</Text>
               </View>
-            </>
+            </React.Fragment>
           );
         })}
 

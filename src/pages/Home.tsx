@@ -21,8 +21,6 @@ const Home: React.FC = () => {
   };
 
   const addCard = async (data: QuestionType) => {
-    console.log('Submitted Question', data);
-
     await addDoc(collection(db, 'cards'), data)
       .then((doc) => {
         if (doc.id) {
