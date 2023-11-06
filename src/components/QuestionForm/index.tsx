@@ -72,9 +72,9 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ onSubmit }) => {
                   placeholder="Select topic"
                   {...register('topic')}
                 >
-                  {Object.values(TopicsEnum).map((topic: string) => (
-                    <option key={topic as React.Key} value={topic}>
-                      {topic}
+                  {Object.values(TopicsEnum).map((topic: any) => (
+                    <option key={topic as React.Key} value={topic as any}>
+                      {topic as any}
                     </option>
                   ))}
                 </Select>
