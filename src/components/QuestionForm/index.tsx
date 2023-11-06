@@ -14,8 +14,18 @@ import {
   Image,
   useColorModeValue,
 } from '@chakra-ui/react';
-import TopicsEnum from '../../constants/topics';
 import { QuestionType } from '../../interfaces';
+
+const TopicsEnum = {
+  GERMAN: 'German',
+  SCIENCE: 'Science',
+  MATH: 'Math',
+  HISTORY: 'History',
+  ART: 'Art',
+  MUSIC: 'Music',
+  REACT: 'React',
+  DSA: 'DSA',
+};
 
 const schema = yup
   .object({
