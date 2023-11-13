@@ -19,18 +19,24 @@ const styles = StyleSheet.create({
   card: {
     width: '50%',
     height: 150,
-    padding: 10,
+    paddingVertical: 10,
     borderBottomWidth: 1,
     borderColor: 'gray',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  rightBorder: {
+  question: {
+    paddingLeft: 40,
+    paddingRight: 10,
     borderRightWidth: 1,
+  },
+  answer: {
+    paddingLeft: 10,
+    paddingRight: 40,
   },
 
   cardText: {
-    fontSize: 14,
+    fontSize: 12,
     marginTop: 8,
     textAlign: 'center',
   },
@@ -63,10 +69,10 @@ const Cards: React.FC<CardsProps> = ({ cards }) => (
         {cards.map((card: QuestionType, index: number) => {
           return (
             <React.Fragment key={index}>
-              <View style={[styles.card, styles.rightBorder]}>
+              <View style={[styles.question, styles.card]}>
                 <Text style={styles.cardText}>{card.question}</Text>
               </View>
-              <View key={index} style={[styles.card]}>
+              <View key={index} style={[styles.answer, styles.card]}>
                 <Text style={styles.cardText}>{card.answer}</Text>
               </View>
             </React.Fragment>

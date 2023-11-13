@@ -98,7 +98,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ onSubmit }) => {
                   Question
                 </FormLabel>
                 <Textarea
-                  maxLength={60}
+                  maxLength={120}
                   id="question"
                   placeholder="Enter a question here"
                   {...register('question')}
